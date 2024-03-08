@@ -141,7 +141,8 @@ if __name__ == '__main__':
     results = search_files(current_directory, keyword, context, True, chunk_size)
 
     print(f'\n👉 Results for keyword "{keyword}":')
-    with open(f'xgrep-{keyword}-{"".join(random.choices(string.digits, k=10))}.txt', 'w') as f:
+    directory = os.path.basename(os.path.abspath(os.curdir))
+    with open(f'xgrep-{keyword}-{directory}-{"".join(random.choices(string.digits, k=10))}.txt', 'w') as f:
         for result in results:
             print(f'👉 File: {result["file"]}')
             print(f'👉 Match (surrounded by {context} characters of context):')
